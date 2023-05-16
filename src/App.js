@@ -1,9 +1,11 @@
 import "./App.css";
+import UserGoals from "./components/UserGoals";
 
 function App() {
   return (
     <div className="App">
-      <h1>Test</h1>
+      <h1>Fitness App</h1>
+      <UserGoals></UserGoals>
     </div>
   );
 }
