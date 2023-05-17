@@ -3,8 +3,8 @@ import UserGoals from "./components/UserGoals";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Fitness App</h1>
+    <div>
+      <h1 className="flex justify-center text-3xl font-bold underline">Fitness App</h1>
       <UserGoals></UserGoals>
     </div>
   );
