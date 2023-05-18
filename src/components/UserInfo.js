@@ -2,18 +2,19 @@ import React, { useState } from 'react'
 
 const UserInfo = ({ onUserInfoChange }) => {
   const [userInfo, setUserInfo] = useState({
-    age: '',
-    gender: '',
-    height: '',
-    weight: '',
-    activityLevel: '',
-  })
+    age: "",
+    gender: "",
+    height: "",
+    weight: "",
+    activityLevel: "",
+  });
+
+  const { age, gender, height, weight, activityLevel } = userInfo;
 
   const handleUserInfoChange = (e) => {
-    const { name, value } = e.target
-    setUserInfo({ ...userInfo, [name]: value })
-    props.onUserInfoChange(userInfo, {})
-  }
+    const { id, value } = e.target;
+    setUserInfo((prevUserInfo) => ({ ...prevUserInfo, [id]: value }));
+  };
 
   return (
     <div className='flex justify-center items-center h-screen'>
@@ -67,8 +68,8 @@ const UserInfo = ({ onUserInfoChange }) => {
           <div className='flex flex-col'>
             <label htmlFor='activity-level'>Activity Level</label>
             <select
-              id='activity-level'
-              value={activity}
+              id='activityLevel'
+              value={activityLevel}
               onChange={handleUserInfoChange}
               className='border border-gray-400 rounded-md p-2'
             >
