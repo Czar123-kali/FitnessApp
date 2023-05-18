@@ -17,7 +17,7 @@ const UserInfo = ({ onUserInfoChange }) => {
   };
 
   return (
-    <div className='flex justify-center items-center h-screen'>
+    <div className='info-page flex justify-center items-center h-screen'>
       <div className='bg-gray-200 p-6 rounded-lg w-1/2'>
         <h3 className='text-lg font-semibold mb-4'>
           Input your info below to calculate how many calories you burn a day:

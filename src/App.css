@@ -12,3 +12,12 @@
 .animate-bounce {
     animation: bounce 1s ease-in 1;
 }
+
+.info-page {
+    max-height: 700px;
+}
+
+.goal-page {
+    max-height: 200px;
+}
+

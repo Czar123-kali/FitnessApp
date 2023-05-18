@@ -9,7 +9,7 @@ const UserGoals = ({ onUserGoalChange }) => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="goal-page flex justify-center items-center h-screen">
       <div className="bg-gray-200 p-6 rounded-lg">
         <h3 className="text-lg font-semibold mb-4">
           Select your fitness goal:
