@@ -15,7 +15,7 @@ function App() {
       <h1 className='flex justify-center text-3xl font-bold underline'>
         Fitness App
       </h1>
-      <UserInfo onUserInfoChange={handleUserDataChange} />
+      {/* <UserInfo onUserInfoChange={handleUserDataChange} /> */}
       <UserGoals onUserGoalChange={handleUserDataChange} />
     </div>
   )

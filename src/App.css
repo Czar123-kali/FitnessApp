@@ -1,0 +1,14 @@
+@keyframes bounce {
+        20% {
+            transform: translateY(-10px);
+        }
+    
+        40% {
+            transform: none;
+        }
+    
+}
+
+.animate-bounce {
+    animation: bounce 1s ease-in 1;
+}
