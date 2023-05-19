@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 
 const UserInfo = ({ onUserInfoChange }) => {
   const [userInfo, setUserInfo] = useState({
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    activityLevel: "",
-  });
-
-  const { age, gender, height, weight, activityLevel } = userInfo;
+    age: '',
+    gender: '',
+    height: '',
+    weight: '',
+    activityLevel: '',
+  })
+  const { age, gender, height, weight, activityLevel } = userInfo
 
   const handleUserInfoChange = (e) => {
-    const { id, value } = e.target;
-    setUserInfo((prevUserInfo) => ({ ...prevUserInfo, [id]: value }));
-  };
+    const { name, value } = e.target
+    setUserInfo({ ...userInfo, [name]: value })
+    onUserInfoChange({ ...userInfo, [name]: value }) // Pass the updated userInfo object
+  }
 
   return (
     <div className='info-page flex justify-center items-center h-screen'>
@@ -27,7 +27,7 @@ const UserInfo = ({ onUserInfoChange }) => {
             <label htmlFor='age'>Age</label>
             <input
               type='number'
-              id='age'
+              name='age'
               value={age}
               onChange={handleUserInfoChange}
               className='border border-gray-400 rounded-md p-2'
@@ -36,7 +36,7 @@ const UserInfo = ({ onUserInfoChange }) => {
           <div className='flex flex-col'>
             <label htmlFor='gender'>Gender</label>
             <select
-              id='gender'
+              name='gender'
               value={gender}
               onChange={handleUserInfoChange}
               className='border border-gray-400 rounded-md p-2'
@@ -49,7 +49,7 @@ const UserInfo = ({ onUserInfoChange }) => {
             <label htmlFor='height'>Height (cm)</label>
             <input
               type='number'
-              id='height'
+              name='height'
               value={height}
               onChange={handleUserInfoChange}
               className='border border-gray-400 rounded-md p-2'
@@ -59,7 +59,7 @@ const UserInfo = ({ onUserInfoChange }) => {
             <label htmlFor='weight'>Weight (kg)</label>
             <input
               type='number'
-              id='weight'
+              name='weight'
               value={weight}
               onChange={handleUserInfoChange}
               className='border border-gray-400 rounded-md p-2'
@@ -68,7 +68,7 @@ const UserInfo = ({ onUserInfoChange }) => {
           <div className='flex flex-col'>
             <label htmlFor='activity-level'>Activity Level</label>
             <select
-              id='activityLevel'
+              name='activityLevel'
               value={activityLevel}
               onChange={handleUserInfoChange}
               className='border border-gray-400 rounded-md p-2'
@@ -91,9 +91,9 @@ const UserInfo = ({ onUserInfoChange }) => {
               </option>
             </select>
           </div>
-          <button className='bg-blue-500 text-white px-4 py-2 rounded-md'>
+          {/* <button className='bg-blue-500 text-white px-4 py-2 rounded-md'>
             Calculate
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
