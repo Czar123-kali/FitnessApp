@@ -28,9 +28,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <h1 className="flex justify-center text-3xl font-bold underline">
-        Fitness App
-      </h1>
       <Routes>
         <Route
           path="/"
@@ -41,17 +38,17 @@ function App() {
             />
           }
         />
-        <Route path="goals" element={<UserGoals />}></Route>
-
         <Route
-          path="result"
+          path="goals"
           element={
-            <Result
+            <UserGoals
+              onUserGoalChange={handleUserDataChange}
+              userInfo={UserInfo}
               userData={userData}
-              onTdeeCalculation={handleTdeeCalculation}
+              handleTdeeCalculation={handleTdeeCalculation}
             />
           }
-        />
+        ></Route>
         <Route path="calculator" element={<Nutrition tdee={tdee} />}></Route>
       </Routes>
     </div>
