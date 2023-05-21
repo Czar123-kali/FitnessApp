@@ -1,5 +1,6 @@
 import UserGoals from './components/UserGoals'
 import UserInfo from './components/UserInfo'
+import Result from './components/Result'
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       >
         Calculate
       </button>
+      <Result userData={userData}/>
     </div>
   )
 }
