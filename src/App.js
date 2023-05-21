@@ -1,14 +1,29 @@
 import UserGoals from "./components/UserGoals";
 import UserInfo from "./components/UserInfo";
-import Result from "./components/Result";
 import Nutrition from "./components/Nutrition";
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
-  const [userData, setUserData] = useState({});
-  const [tdee, setTdee] = useState(null);
+  const [userData, setUserData] = useState({
+    goal: "",
+    age: "",
+    gender: "",
+    height: "",
+    weight: "",
+    activityLevel: "",
+  });
+  const [tdee, setTdee] = useState();
+  const [userInfo, setUserInfo] = useState({
+    age: "",
+    gender: "",
+    height: "",
+    weight: "",
+    activityLevel: "",
+  });
+  const [selectedGoal, setSelectedGoal] = useState("");
+  const [showTDEE, setShowTDEE] = useState(false);
 
   const handleTdeeCalculation = (tdeeValue) => {
     setTdee(tdeeValue);
@@ -16,14 +31,9 @@ function App() {
 
   const handleUserDataChange = (userInfoData, userGoalData) => {
     const updatedUserData = { ...userInfoData, userGoalData };
+    console.log(updatedUserData);
     setUserData(updatedUserData);
   };
-
-  const handleShowUserData = () => {
-    console.log("User Data:", userData);
-  };
-
-  useEffect(() => {}, [userData]);
 
   return (
     <div>
@@ -33,8 +43,10 @@ function App() {
           path="/"
           element={
             <UserInfo
-              onUserInfoChange={handleUserDataChange}
               handleUserDataChange={handleUserDataChange}
+              userData={userData}
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
             />
           }
         />
@@ -42,14 +54,21 @@ function App() {
           path="goals"
           element={
             <UserGoals
-              onUserGoalChange={handleUserDataChange}
-              userInfo={UserInfo}
+              handleUserDataChange={handleUserDataChange}
+              userInfo={userInfo}
               userData={userData}
               handleTdeeCalculation={handleTdeeCalculation}
+              selectedGoal={selectedGoal}
+              setSelectedGoal={setSelectedGoal}
+              showTDEE={showTDEE}
+              setShowTDEE={setShowTDEE}
             />
           }
         ></Route>
-        <Route path="calculator" element={<Nutrition tdee={tdee} />}></Route>
+        <Route
+          path="calculator"
+          element={<Nutrition tdee={tdee} userData={userData} />}
+        ></Route>
       </Routes>
     </div>
   );

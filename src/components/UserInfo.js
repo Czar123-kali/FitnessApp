@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 
-const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
-  const [userInfo, setUserInfo] = useState({
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    activityLevel: "",
-  });
+const UserInfo = ({
+  handleUserDataChange,
+  userData,
+  userInfo,
+  setUserInfo,
+}) => {
   const { age, gender, height, weight, activityLevel } = userInfo;
 
   const handleUserInfoChange = (e) => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
-    onUserInfoChange({ ...userInfo, [name]: value }); // Pass the updated userInfo object
+    handleUserDataChange({ ...userInfo, [name]: value });
+    console.log(userInfo);
+    console.log(userData);
   };
 
   return (
@@ -39,7 +39,7 @@ const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
               name="gender"
               value={gender}
               onChange={handleUserInfoChange}
-              className="border border-gray-400 rounded-md p-2"
+              className="border border-gray-400 bg-white rounded-md p-2"
             >
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -71,7 +71,7 @@ const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
               name="activityLevel"
               value={activityLevel}
               onChange={handleUserInfoChange}
-              className="border border-gray-400 rounded-md p-2"
+              className="border border-gray-400 bg-white rounded-md p-2"
             >
               <option value="sedentary">
                 Sedentary (little or no exercise)
@@ -91,10 +91,9 @@ const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
               </option>
             </select>
           </div>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            onClick={handleShowUserData}
-          />
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+            Save Information
+          </button>
         </div>
       </div>
     </div>

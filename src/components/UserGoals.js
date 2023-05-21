@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import Result from "./Result";
 
 const UserGoals = ({
-  onUserGoalChange,
+  handleUserDataChange,
   userInfo,
   userData,
   handleTdeeCalculation,
+  selectedGoal,
+  setSelectedGoal,
+  showTDEE,
+  setShowTDEE,
 }) => {
-  const [selectedGoal, setSelectedGoal] = useState(""); // Add selectedGoal state
-
   const handleGoalChange = (event) => {
     const goal = event.currentTarget.value;
     setSelectedGoal(goal); // Update selectedGoal state
-    onUserGoalChange(userInfo, goal); // Pass the selected goal to the parent component
+    handleUserDataChange(userInfo, goal); // Pass the selected goal to the parent component
   };
 
   return (
@@ -99,6 +101,8 @@ const UserGoals = ({
       <Result
         userData={userData}
         handleTdeeCalculation={handleTdeeCalculation}
+        showTDEE={showTDEE}
+        setShowTDEE={setShowTDEE}
       />
     </div>
   );
