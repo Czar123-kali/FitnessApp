@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 h-16 flex justify-end items-center pr-8">
       {/* Navigation menu */}
-      {/* <ul className="text-white flex justify-around min-w-full">
+      <ul className="text-white flex justify-around min-w-full invisible md:visible">
         <li className="ring-2 rounded-xl px-4 py-1 hover:ring-blue-300">
           <a href="info-page">Your Information</a>
         </li>
@@ -37,10 +37,10 @@ const Navbar = () => {
         <li className="ring-2 rounded-xl px-4 py-1 hover:ring-blue-300">
           <a href="#">Your Workouts</a>
         </li>
-      </ul> */}
+      </ul>
 
       <div
-        className="space-y-2 relative"
+        className="space-y-2 relative md:hidden"
         role="button"
         tabIndex={0}
         onClick={handleIsOpen}
@@ -51,26 +51,40 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="modal-overlay" ref={dropdownRef}>
+        <div className="modal-overlay md:hidden" ref={dropdownRef}>
           <div className="modal-content absolute w-full top-16 right-0 bg-white border-gray-200 dark:bg-gray-900 px-4 py-2">
-            <button
-              className="modal-close absolute top-2 right-2 text-gray-500"
-              onClick={handleIsOpen}
-            >
-              X
-            </button>
             <ul className="text-white mt-2 mb-2">
-              <li className="h-8 py-3 flex justify-center items-center">
-                <a href="#">Your Information</a>
+              <li className="h-8 py-3">
+                <a
+                  href="/"
+                  className="flex justify-center items-center rounded-md w-12/12 hover:bg-blue-400"
+                >
+                  Your Information
+                </a>
               </li>
-              <li className="h-8 py-3 flex justify-center items-center">
-                <a href="#">Your Goals</a>
+              <li className="h-8 py-3">
+                <a
+                  href="/"
+                  className="flex justify-center items-center rounded-md w-12/12 hover:bg-blue-400"
+                >
+                  Your Goals
+                </a>
               </li>
-              <li className="h-8 py-3 flex justify-center items-center">
-                <a href="#">Your Personal Calculator</a>
+              <li className="h-8 py-3">
+                <a
+                  href="/"
+                  className="flex justify-center items-center rounded-md w-12/12 hover:bg-blue-400"
+                >
+                  Your Personal Calculator
+                </a>
               </li>
-              <li className="h-8 py-3 flex justify-center items-center">
-                <a href="#">Your Workouts</a>
+              <li className="h-8 py-3">
+                <a
+                  href="/"
+                  className="flex justify-center items-center rounded-md w-12/12 hover:bg-blue-400"
+                >
+                  Your Workouts
+                </a>
               </li>
             </ul>
           </div>
