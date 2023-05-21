@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Nutrition = ({ tdee }) => {
   // here i set default tdee to be 2000,
@@ -7,6 +7,13 @@ const Nutrition = ({ tdee }) => {
   const usertdee = tdee === null || isNaN(tdee) ? 2000 : tdee
   const [foodLog, setFoodLog] = useState([])
   const [foodInput, setFoodInput] = useState('')
+
+  const handleInputChange = (event) => {
+    setFoodInput(event.target.value)
+  }
+  useEffect(() => {
+    console.log(foodInput)
+  }, [foodInput])
   return (
     <div>
       <div className='sm:col-span-4 flex flex-col'>
@@ -24,7 +31,7 @@ const Nutrition = ({ tdee }) => {
             name='food'
             type='text'
             autoComplete='food'
-            onChange={setFoodInput(e.target.value)}
+            onChange={handleInputChange}
             className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
           />
           <button className='absolute right-0 top-0 bottom-0 px-3 py-1.5 bg-blue-500 text-white rounded-r-md'>
