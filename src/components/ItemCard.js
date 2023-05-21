@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const ItemCard = ({ item }) => {
   console.log('card' + item.name)
@@ -19,4 +19,4 @@ const ItemCard = ({ item }) => {
   )
 }
 
-export default ItemCard
+export default ItemCard;
