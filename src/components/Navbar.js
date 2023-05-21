@@ -5,7 +5,7 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
 
   const handleIsOpen = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
   const handleClickOutside = (event) => {
@@ -26,16 +26,16 @@ const Navbar = () => {
       {/* Navigation menu */}
       <ul className="text-white flex justify-around min-w-full invisible md:visible">
         <li className="ring-2 rounded-xl px-4 py-1 hover:ring-blue-300">
-          <a href="info-page">Your Information</a>
+          <a href="/">Your Information</a>
         </li>
         <li className="ring-2 rounded-xl px-4 py-1 hover:ring-blue-300">
-          <a href="goals-page">Your Goals</a>
+          <a href="/result">Your Goals</a>
         </li>
         <li className="ring-2 rounded-xl px-4 py-1 hover:ring-blue-300">
-          <a href="#">Your Personal Calories</a>
+          <a href="calculator">Your Personal Calories</a>
         </li>
         <li className="ring-2 rounded-xl px-4 py-1 hover:ring-blue-300">
-          <a href="#">Your Workouts</a>
+          <a href="workouts">Your Workouts</a>
         </li>
       </ul>
 
