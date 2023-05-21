@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900 h-16 flex justify-end items-center pr-8">
@@ -37,19 +51,27 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="modal-overlay w-2/12">
-          <div className="modal-content absolute top-16 bg-white border-gray-200 dark:bg-gray-900 px-4 py-2">
+        <div className="modal-overlay" ref={dropdownRef}>
+          <div className="modal-content absolute w-full top-16 right-0 bg-white border-gray-200 dark:bg-gray-900 px-4 py-2">
             <button
               className="modal-close absolute top-2 right-2 text-gray-500"
               onClick={handleIsOpen}
             >
               X
             </button>
-            <ul className="text-white mt-2">
-              <li>Your Information</li>
-              <li>Your Goals</li>
-              <li>Your Personal Calories</li>
-              <li>Your Workouts</li>
+            <ul className="text-white mt-2 mb-2">
+              <li className="h-8 py-3 flex justify-center items-center">
+                <a href="#">Your Information</a>
+              </li>
+              <li className="h-8 py-3 flex justify-center items-center">
+                <a href="#">Your Goals</a>
+              </li>
+              <li className="h-8 py-3 flex justify-center items-center">
+                <a href="#">Your Personal Calculator</a>
+              </li>
+              <li className="h-8 py-3 flex justify-center items-center">
+                <a href="#">Your Workouts</a>
+              </li>
             </ul>
           </div>
         </div>
