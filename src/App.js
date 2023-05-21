@@ -32,12 +32,12 @@ function App() {
       </h1>
       <UserInfo onUserInfoChange={handleUserDataChange} />
       <UserGoals onUserGoalChange={handleUserDataChange} userInfo={userData} />
-      <button
+      {/* <button
         className='bg-blue-500 text-white px-4 py-2 rounded-md'
         onClick={handleShowUserData}
       >
         Calculate
-      </button>
+      </button> */}
       <Result userData={userData} onTdeeCalculation={handleTdeeCalculation} />
       <Nutrition tdee={tdee} />
     </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ItemCard from './ItemCard'
+import axios from 'axios'
 
 const Nutrition = ({ tdee }) => {
   const usertdee = tdee === null || isNaN(tdee) ? 2000 : tdee
@@ -13,6 +14,7 @@ const Nutrition = ({ tdee }) => {
     }
 
     const query = encodeURIComponent(foodInput)
+
     setIsLoading(true)
 
     try {
@@ -28,13 +30,13 @@ const Nutrition = ({ tdee }) => {
       )
 
       const result = await response.json()
-
-      setFoodLog((prevFoodLog) => [...prevFoodLog, result])
+      setFoodLog([...foodLog, result[0]])
       setIsLoading(false)
     } catch (error) {
       console.error('Error: ', error)
       setIsLoading(false)
     }
+    setFoodInput('')
   }
 
   const handleInputChange = (event) => {
@@ -61,7 +63,7 @@ const Nutrition = ({ tdee }) => {
             id='food'
             name='food'
             type='text'
-            autoComplete='food'
+            value={foodInput}
             onChange={handleInputChange}
             className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
           />
@@ -79,11 +81,11 @@ const Nutrition = ({ tdee }) => {
         </p>
       </div>
       <div>
-        {foodLog.map((item, index) => (
-          <div>
+        <div className='space-x-4'>
+          {foodLog.map((item, index) => (
             <ItemCard key={index} item={item} />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
