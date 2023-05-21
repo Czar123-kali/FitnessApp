@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 
-const Result = ({ userData }) => {
+const Result = ({ userData, onTdeeCalculation }) => {
   const [showTDEE, setShowTDEE] = useState(false)
   const calculateTDEE = () => {
     const { age, gender, height, weight, activityLevel } = userData
-    if (!age || !gender || !height || !weight || !activityLevel) {
-      return 'Please input your information'
-    }
     let activityMultiplier
     switch (activityLevel) {
       case 'sedentary':
@@ -26,7 +23,7 @@ const Result = ({ userData }) => {
         break
       default:
         activityMultiplier = 1.2
-        break // Add the missing break statement
+        break
     }
     const tdee =
       (10 * weight +
@@ -40,6 +37,7 @@ const Result = ({ userData }) => {
 
   const handleShowTDEE = () => {
     setShowTDEE(true) // Set showTDEE state to true when the button is clicked
+    onTdeeCalculation(tdee)
   }
 
   const tdee = calculateTDEE() // Calculate TDEE
@@ -52,7 +50,22 @@ const Result = ({ userData }) => {
       >
         Calculate TDEE
       </button>
-      {showTDEE && tdee && <h2>TDEE: {tdee}</h2>}
+      {showTDEE && !isNaN(tdee) ? (
+        <>
+          <h2>
+            You are {userData.age} y/o {userData.gender} who is{' '}
+            {userData.height} cm and {userData.weight} kg with{' '}
+            {userData.activityLevel} lifestyle.
+          </h2>
+          <h2>
+            Based on your data, your best estimate for maintenance calories is{' '}
+            {tdee} per day.
+            <h2></h2>
+          </h2>
+        </>
+      ) : showTDEE ? (
+        <>Please input your info</>
+      ) : null}
     </div>
   )
 }

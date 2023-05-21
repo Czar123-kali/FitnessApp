@@ -1,10 +1,16 @@
 import UserGoals from './components/UserGoals'
 import UserInfo from './components/UserInfo'
 import Result from './components/Result'
+import Nutrition from './components/Nutrition'
 import { useState, useEffect } from 'react'
 
 function App() {
   const [userData, setUserData] = useState({})
+  const [tdee, setTdee] = useState(null)
+
+  const handleTdeeCalculation = (tdeeValue) => {
+    setTdee(tdeeValue)
+  }
 
   const handleUserDataChange = (userInfoData, userGoalData) => {
     const updatedUserData = { ...userInfoData, userGoalData }
@@ -30,7 +36,8 @@ function App() {
       >
         Calculate
       </button>
-      <Result userData={userData}/>
+      <Result userData={userData} onTdeeCalculation={handleTdeeCalculation} />
+      <Nutrition tdee={tdee}/>
     </div>
   )
 }
