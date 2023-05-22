@@ -12,16 +12,15 @@ const UserInfo = ({
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
     handleUserDataChange({ ...userInfo, [name]: value });
-    console.log(userInfo);
-    console.log(userData);
   };
 
   return (
-    <div className="info-page flex justify-center items-center h-screen">
+    <div className="info-page flex justify-center items-center h-[calc(100vh-4rem)]">
       <div className="bg-gray-200 p-6 rounded-lg w-1/2">
         <h3 className="text-lg font-semibold mb-4">
           Input your info below to calculate how many calories you burn a day:
         </h3>
+        form
         <div className="flex flex-col space-y-4">
           <div className="flex flex-col">
             <label htmlFor="age">Age</label>
@@ -41,6 +40,9 @@ const UserInfo = ({
               onChange={handleUserInfoChange}
               className="border border-gray-400 bg-white rounded-md p-2"
             >
+              <option defaultValue="" disabled selected required>
+                Select Gender
+              </option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
@@ -72,7 +74,11 @@ const UserInfo = ({
               value={activityLevel}
               onChange={handleUserInfoChange}
               className="border border-gray-400 bg-white rounded-md p-2"
+              defaultValue={"sedentary"}
             >
+              <option defaultValue="" disabled selected required>
+                Choose an activity level
+              </option>
               <option value="sedentary">
                 Sedentary (little or no exercise)
               </option>
