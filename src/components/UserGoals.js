@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import Result from "./Result";
 
 const UserGoals = ({
-  onUserGoalChange,
+  handleUserDataChange,
   userInfo,
   userData,
   handleTdeeCalculation,
+  selectedGoal,
+  setSelectedGoal,
+  showTDEE,
+  setShowTDEE,
 }) => {
-  const [selectedGoal, setSelectedGoal] = useState(""); // Add selectedGoal state
-
   const handleGoalChange = (event) => {
     const goal = event.currentTarget.value;
     setSelectedGoal(goal); // Update selectedGoal state
-    onUserGoalChange(userInfo, goal); // Pass the selected goal to the parent component
+    handleUserDataChange(userInfo, goal); // Pass the selected goal to the parent component
   };
 
   return (
-    <div className="goal-page flex justify-center items-center h-screen">
+    <div className="goal-page flex justify-center items-center h-[calc(100vh-4rem)]">
       <div className="bg-gray-200 p-6 rounded-lg">
         <h3 className="text-lg font-semibold mb-4">
           Select your fitness goal:
@@ -99,6 +101,8 @@ const UserGoals = ({
       <Result
         userData={userData}
         handleTdeeCalculation={handleTdeeCalculation}
+        showTDEE={showTDEE}
+        setShowTDEE={setShowTDEE}
       />
     </div>
   );

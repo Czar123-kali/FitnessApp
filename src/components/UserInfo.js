@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 
-const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
-  const [userInfo, setUserInfo] = useState({
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    activityLevel: "",
-  });
+const UserInfo = ({
+  handleUserDataChange,
+  userData,
+  userInfo,
+  setUserInfo,
+}) => {
   const { age, gender, height, weight, activityLevel } = userInfo;
 
   const handleUserInfoChange = (e) => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
-    onUserInfoChange({ ...userInfo, [name]: value }); // Pass the updated userInfo object
+    handleUserDataChange({ ...userInfo, [name]: value });
   };
 
   return (
-    <div className="info-page flex justify-center items-center h-screen">
+    <div className="info-page flex justify-center items-center h-[calc(100vh-4rem)]">
       <div className="bg-gray-200 p-6 rounded-lg w-1/2">
         <h3 className="text-lg font-semibold mb-4">
           Input your info below to calculate how many calories you burn a day:
         </h3>
+        form
         <div className="flex flex-col space-y-4">
           <div className="flex flex-col">
             <label htmlFor="age">Age</label>
@@ -39,8 +38,11 @@ const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
               name="gender"
               value={gender}
               onChange={handleUserInfoChange}
-              className="border border-gray-400 rounded-md p-2"
+              className="border border-gray-400 bg-white rounded-md p-2"
             >
+              <option defaultValue="" disabled selected required>
+                Select Gender
+              </option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
@@ -71,8 +73,12 @@ const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
               name="activityLevel"
               value={activityLevel}
               onChange={handleUserInfoChange}
-              className="border border-gray-400 rounded-md p-2"
+              className="border border-gray-400 bg-white rounded-md p-2"
+              defaultValue={"sedentary"}
             >
+              <option defaultValue="" disabled selected required>
+                Choose an activity level
+              </option>
               <option value="sedentary">
                 Sedentary (little or no exercise)
               </option>
@@ -91,10 +97,9 @@ const UserInfo = ({ onUserInfoChange, handleShowUserData }) => {
               </option>
             </select>
           </div>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            onClick={handleShowUserData}
-          />
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+            Save Information
+          </button>
         </div>
       </div>
     </div>

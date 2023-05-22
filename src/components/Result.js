@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Result = ({ userData, handleTdeeCalculation }) => {
-  const [showTDEE, setShowTDEE] = useState(false);
+const Result = ({ userData, handleTdeeCalculation, setShowTDEE, showTDEE }) => {
   const calculateTDEE = () => {
-    const { age, gender, height, weight, activityLevel } = userData;
     let activityMultiplier;
-    switch (activityLevel) {
+    switch (userData.activityLevel) {
       case "sedentary":
         activityMultiplier = 1.2;
         break;
@@ -26,10 +24,10 @@ const Result = ({ userData, handleTdeeCalculation }) => {
         break;
     }
     const tdee =
-      (10 * weight +
-        6.25 * height -
-        5 * age +
-        (gender === "female" ? -161 : 5)) *
+      (10 * userData.weight +
+        6.25 * userData.height -
+        5 * userData.age +
+        (userData.gender === "female" ? -161 : 5)) *
       activityMultiplier;
 
     return Math.round(tdee);
