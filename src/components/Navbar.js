@@ -23,7 +23,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900 h-16 flex justify-end items-center pr-8">
+    <nav className="bg-gray-900 h-16 flex justify-end items-center pr-8">
       <ul className="text-black dark:text-white flex justify-around min-w-full invisible md:visible">
         <li className="ring-2 rounded-xl px-4 py-1 hover:ring-blue-300">
           <Link to="/">Your Information</Link>
