@@ -205,11 +205,9 @@ const UserInfo = ({
                 <h2></h2>
               </h2>
             </div>
-          ) : showTDEE ? (
-            <div className='mt-6'>
-              <h2 className='text-red-500'>Please input your info first</h2>
-            </div>
-          ) : null}
+          ) : (
+            showTDEE
+          )}
         </div>
       </div>
     </div>
