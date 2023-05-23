@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import ItemCard from './ItemCard'
-import axios from 'axios'
+
 import NutritionAnalysis from './NutritionAnalysis'
 
-const Nutrition = ({ tdee }) => {
-  const usertdee = tdee === null || isNaN(tdee) ? 2000 : tdee
-  const [foodLog, setFoodLog] = useState([])
+const Nutrition = ({
+  usertdee,
+  foodLog,
+  setFoodLog,
+  carbs,
+  setCarbs,
+  protein,
+  setProtein,
+  fat,
+  setFat,
+}) => {
   const [foodInput, setFoodInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [caloriesLeft, setCaloriesLeft] = useState(usertdee)
-  const [fat, setFat] = useState(0)
-  const [carbs, setCarbs] = useState(0)
-  const [protein, setProtein] = useState(0)
 
   const handleButtonClick = async () => {
     if (foodInput.trim() === '') {
+      // console.log(usertdee)
       return
     }
 
@@ -96,8 +102,7 @@ const Nutrition = ({ tdee }) => {
           </button>
         </div>
         <p className='mt-3 text-sm leading-6 text-gray-600'>
-          Example: 1lb brisket and fries. Default quantity is 100g if you don't
-          specify
+          Example: 1lb brisket. Default quantity is 100g if you don't specify
         </p>
       </div>
       <div>

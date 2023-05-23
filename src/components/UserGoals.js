@@ -22,7 +22,7 @@ const UserGoals = ({
   const handleFreqChange = (event) => {
     const frequency = event.target.value
     setWorkoutFreq(frequency)
-    handleUserDataChange(userData, selectedGoal, frequency)
+    handleUserDataChange(userInfo, selectedGoal, frequency)
   }
 
   return (
