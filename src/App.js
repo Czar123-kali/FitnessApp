@@ -4,7 +4,7 @@ import Nutrition from "./components/Nutrition";
 import Navbar from "./components/Navbar";
 import Workout from "./components/Workout";
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -16,7 +16,8 @@ function App() {
     activityLevel: "",
     workoutFreq: 0,
   });
-  const [tdee, setTdee] = useState();
+  const [tdee, setTdee] = useState(0);
+  const usertdee = tdee === 0 ? 2000 : tdee;
   const [userInfo, setUserInfo] = useState({
     age: "",
     gender: "",
@@ -28,7 +29,10 @@ function App() {
   const [workoutFreq, setWorkoutFreq] = useState(0);
 
   const [showTDEE, setShowTDEE] = useState(false);
-
+  const [foodLog, setFoodLog] = useState([]);
+  const [fat, setFat] = useState(0);
+  const [carbs, setCarbs] = useState(0);
+  const [protein, setProtein] = useState(0);
   const handleTdeeCalculation = (tdeeValue) => {
     setTdee(tdeeValue);
   };
@@ -38,6 +42,7 @@ function App() {
     console.log(updatedUserData);
     setUserData(updatedUserData);
   };
+  // const [caloriesLeft, setCaloriesLeft] = useState(usertdee)
 
   return (
     <div>
@@ -73,7 +78,23 @@ function App() {
         ></Route>
         <Route
           path="calculator"
-          element={<Nutrition tdee={tdee} userData={userData} />}
+          element={
+            <Nutrition
+              tdee={tdee}
+              userData={userData}
+              usertdee={usertdee}
+              foodLog={foodLog}
+              setFoodLog={setFoodLog}
+              fat={fat}
+              setFat={setFat}
+              carbs={carbs}
+              setCarbs={setCarbs}
+              protein={protein}
+              setProtein={setProtein}
+              // caloriesLeft={caloriesLeft}
+              // setCaloriesLeft={setCaloriesLeft}
+            />
+          }
         ></Route>
         <Route
           path="workouts"
