@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Result from "./Result";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+
+import { Link } from 'react-router-dom'
 
 const UserGoals = ({
   handleUserDataChange,
@@ -14,64 +14,64 @@ const UserGoals = ({
   showTDEE,
   setShowTDEE,
 }) => {
-  const [selectedFrequency, setSelectedFrequency] = useState(null);
+  const [selectedFrequency, setSelectedFrequency] = useState(null)
 
   const handleGoalChange = (event) => {
-    const goal = event.currentTarget.value;
-    setSelectedGoal(goal);
-    handleUserDataChange(userInfo, goal, workoutFreq);
-  };
+    const goal = event.currentTarget.value
+    setSelectedGoal(goal)
+    handleUserDataChange(userInfo, goal, workoutFreq)
+  }
 
   const handleFreqChange = (event) => {
-    const frequency = parseInt(event.target.value, 10);
-    setWorkoutFreq(frequency);
-    setSelectedFrequency(frequency);
-    handleUserDataChange(userInfo, selectedGoal, frequency);
-  };
+    const frequency = parseInt(event.target.value, 10)
+    setWorkoutFreq(frequency)
+    setSelectedFrequency(frequency)
+    handleUserDataChange(userInfo, selectedGoal, frequency)
+  }
 
   return (
     <div>
-      <div className="absolute left-5 top-1/2 transform -translate-y-1/2">
-        <Link to="/" className="inline-block">
-          <button className="bg-gray-500 text-white rounded-full w-12 h-12 flex items-center justify-center">
+      <div className='absolute left-5 top-1/2 transform -translate-y-1/2'>
+        <Link to='/' className='inline-block'>
+          <button className='bg-gray-500 text-white rounded-full w-12 h-12 flex items-center justify-center'>
             {/* Alternative left arrow */}
             <svg
-              className="h-6 w-6 text-white transform rotate-180"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              className='h-6 w-6 text-white transform rotate-180'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 strokeWidth={2}
-                d="M9 5l7 7-7 7"
+                d='M9 5l7 7-7 7'
               />
             </svg>
           </button>
         </Link>
       </div>
 
-      <div className="goal-page flex justify-center items-center h-[calc(50vh-2rem)]">
-        <div className="bg-gray-200 p-6 rounded-lg mx-auto max-w-screen-lg">
-          <h3 className="text-lg font-semibold mb-4">
+      <div className='goal-page flex justify-center items-center h-[calc(50vh-2rem)]'>
+        <div className='bg-gray-200 p-6 rounded-lg mx-auto max-w-screen-lg'>
+          <h3 className='text-lg font-semibold mb-4'>
             Select your fitness goal:
           </h3>
-          <div className="flex flex-row space-x-4">
+          <div className='flex flex-row space-x-4'>
             <label
               className={`flex items-center ${
-                selectedGoal === "weight-loss"
-                  ? "bg-blue-500 text-white animate-bounce"
-                  : "bg-blue-200 text-blue-500"
+                selectedGoal === 'weight-loss'
+                  ? 'bg-blue-500 text-white animate-bounce'
+                  : 'bg-blue-200 text-blue-500'
               } px-4 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="goal"
-                value="weight-loss"
-                checked={selectedGoal === "weight-loss"}
-                className="hidden"
+                type='radio'
+                name='goal'
+                value='weight-loss'
+                checked={selectedGoal === 'weight-loss'}
+                className='hidden'
                 onClick={handleGoalChange}
                 readOnly
               />
@@ -79,17 +79,17 @@ const UserGoals = ({
             </label>
             <label
               className={`flex items-center ${
-                selectedGoal === "muscle-gain"
-                  ? "bg-green-500 text-white animate-bounce"
-                  : "bg-green-200 text-green-500"
+                selectedGoal === 'muscle-gain'
+                  ? 'bg-green-500 text-white animate-bounce'
+                  : 'bg-green-200 text-green-500'
               } px-4 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="goal"
-                value="muscle-gain"
-                checked={selectedGoal === "muscle-gain"}
-                className="hidden"
+                type='radio'
+                name='goal'
+                value='muscle-gain'
+                checked={selectedGoal === 'muscle-gain'}
+                className='hidden'
                 onClick={handleGoalChange}
                 readOnly
               />
@@ -97,17 +97,17 @@ const UserGoals = ({
             </label>
             <label
               className={`flex items-center ${
-                selectedGoal === "flexibility"
-                  ? "bg-yellow-500 text-white animate-bounce"
-                  : "bg-yellow-200 text-yellow-500"
+                selectedGoal === 'flexibility'
+                  ? 'bg-yellow-500 text-white animate-bounce'
+                  : 'bg-yellow-200 text-yellow-500'
               } px-4 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="goal"
-                value="flexibility"
-                checked={selectedGoal === "flexibility"}
-                className="hidden"
+                type='radio'
+                name='goal'
+                value='flexibility'
+                checked={selectedGoal === 'flexibility'}
+                className='hidden'
                 onClick={handleGoalChange}
                 readOnly
               />
@@ -115,17 +115,17 @@ const UserGoals = ({
             </label>
             <label
               className={`flex items-center ${
-                selectedGoal === "cardiovascular"
-                  ? "bg-red-500 text-white animate-bounce"
-                  : "bg-red-200 text-red-500"
+                selectedGoal === 'cardiovascular'
+                  ? 'bg-red-500 text-white animate-bounce'
+                  : 'bg-red-200 text-red-500'
               } px-4 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="goal"
-                value="cardiovascular"
-                checked={selectedGoal === "cardiovascular"}
-                className="hidden"
+                type='radio'
+                name='goal'
+                value='cardiovascular'
+                checked={selectedGoal === 'cardiovascular'}
+                className='hidden'
                 onClick={handleGoalChange}
                 readOnly
               />
@@ -133,23 +133,23 @@ const UserGoals = ({
             </label>
           </div>
 
-          <h3 className="text-lg font-semibold py-4">
+          <h3 className='text-lg font-semibold py-4'>
             How many times are you willing to work out per week:
           </h3>
-          <div className="flex flex-row space-x-4">
+          <div className='flex flex-row space-x-4'>
             <label
               className={`flex items-center ${
                 selectedFrequency === 1
-                  ? "bg-blue-500 text-white animate-bounce"
-                  : "bg-blue-200 text-blue-500"
+                  ? 'bg-blue-500 text-white animate-bounce'
+                  : 'bg-blue-200 text-blue-500'
               } px-7 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="frequency"
+                type='radio'
+                name='frequency'
                 value={1}
                 checked={workoutFreq === 1}
-                className="hidden"
+                className='hidden'
                 onChange={handleFreqChange}
               />
               0-1 times
@@ -157,16 +157,16 @@ const UserGoals = ({
             <label
               className={`flex items-center ${
                 selectedFrequency === 3
-                  ? "bg-blue-500 text-white animate-bounce"
-                  : "bg-blue-200 text-blue-500"
+                  ? 'bg-blue-500 text-white animate-bounce'
+                  : 'bg-blue-200 text-blue-500'
               } px-7 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="frequency"
+                type='radio'
+                name='frequency'
                 value={3}
                 checked={workoutFreq === 3}
-                className="hidden"
+                className='hidden'
                 onChange={handleFreqChange}
               />
               2-3 times
@@ -174,16 +174,16 @@ const UserGoals = ({
             <label
               className={`flex items-center ${
                 selectedFrequency === 5
-                  ? "bg-blue-500 text-white animate-bounce"
-                  : "bg-blue-200 text-blue-500"
+                  ? 'bg-blue-500 text-white animate-bounce'
+                  : 'bg-blue-200 text-blue-500'
               } px-7 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="frequency"
+                type='radio'
+                name='frequency'
                 value={5}
                 checked={workoutFreq === 5}
-                className="hidden"
+                className='hidden'
                 onChange={handleFreqChange}
               />
               4-5 times
@@ -192,16 +192,16 @@ const UserGoals = ({
             <label
               className={`flex items-center ${
                 selectedFrequency === 7
-                  ? "bg-blue-500 text-white animate-bounce"
-                  : "bg-blue-200 text-blue-500"
+                  ? 'bg-blue-500 text-white animate-bounce'
+                  : 'bg-blue-200 text-blue-500'
               } px-7 py-2 rounded cursor-pointer transition-colors`}
             >
               <input
-                type="radio"
-                name="frequency"
+                type='radio'
+                name='frequency'
                 value={7}
                 checked={workoutFreq === 7}
-                className="hidden"
+                className='hidden'
                 onChange={handleFreqChange}
               />
               6-7 times
@@ -210,36 +210,29 @@ const UserGoals = ({
         </div>
       </div>
 
-      <div className="absolute right-5 top-1/2 transform -translate-y-1/2">
-        <Link to="/calculator" className="inline-block">
-          <button className="bg-gray-500 text-white rounded-full w-12 h-12 flex items-center justify-center">
+      <div className='absolute right-5 top-1/2 transform -translate-y-1/2'>
+        <Link to='/calculator' className='inline-block'>
+          <button className='bg-gray-500 text-white rounded-full w-12 h-12 flex items-center justify-center'>
             {/* Alternative right arrow */}
             <svg
-              className="h-6 w-6 text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              className='h-6 w-6 text-white'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 strokeWidth={2}
-                d="M9 5l7 7-7 7"
+                d='M9 5l7 7-7 7'
               />
             </svg>
           </button>
         </Link>
       </div>
-
-      <Result
-        userData={userData}
-        handleTdeeCalculation={handleTdeeCalculation}
-        showTDEE={showTDEE}
-        setShowTDEE={setShowTDEE}
-      />
     </div>
-  );
-};
+  )
+}
 
-export default UserGoals;
+export default UserGoals

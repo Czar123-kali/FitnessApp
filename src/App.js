@@ -56,6 +56,9 @@ function App() {
               userData={userData}
               userInfo={userInfo}
               setUserInfo={setUserInfo}
+              showTDEE={showTDEE}
+              setShowTDEE={setShowTDEE}
+              handleTdeeCalculation={handleTdeeCalculation}
             />
           }
         />
