@@ -1,62 +1,73 @@
-import UserGoals from "./components/UserGoals";
-import UserInfo from "./components/UserInfo";
-import Nutrition from "./components/Nutrition";
-import Navbar from "./components/Navbar";
-import Workout from "./components/Workout";
-import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import UserGoals from './components/UserGoals'
+import UserInfo from './components/UserInfo'
+import Nutrition from './components/Nutrition'
+import Navbar from './components/Navbar'
+import Workout from './components/Workout'
+import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [userData, setUserData] = useState({
-    goal: "",
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    activityLevel: "",
+    goal: '',
+    age: '',
+    gender: '',
+    height: '',
+    weight: '',
+    activityLevel: '',
     workoutFreq: 0,
-  });
-  const [tdee, setTdee] = useState(0);
-  const usertdee = tdee === 0 ? 2000 : tdee;
+  })
+  const [tdee, setTdee] = useState(0)
+  const usertdee = tdee === 0 ? 2000 : tdee
   const [userInfo, setUserInfo] = useState({
-    age: "",
-    gender: "male",
-    height: "",
-    weight: "",
-    activityLevel: "sedentary",
-  });
-  const [selectedGoal, setSelectedGoal] = useState("");
-  const [workoutFreq, setWorkoutFreq] = useState(0);
+    age: '',
+    gender: 'male',
+    height: '',
+    weight: '',
+    activityLevel: 'sedentary',
+  })
+  const [selectedGoal, setSelectedGoal] = useState('')
+  const [workoutFreq, setWorkoutFreq] = useState(0)
 
-  const [showTDEE, setShowTDEE] = useState(false);
-  const [foodLog, setFoodLog] = useState([]);
-  const [fat, setFat] = useState(0);
-  const [carbs, setCarbs] = useState(0);
-  const [protein, setProtein] = useState(0);
-  const [caloriesLeft, setCaloriesLeft] = useState(usertdee);
+  const [showTDEE, setShowTDEE] = useState(true)
+  const [foodLog, setFoodLog] = useState([])
+  const [fat, setFat] = useState(0)
+  const [carbs, setCarbs] = useState(0)
+  const [protein, setProtein] = useState(0)
+  const [caloriesLeft, setCaloriesLeft] = useState(usertdee)
   const handleTdeeCalculation = (tdeeValue) => {
-    setTdee(tdeeValue);
-  };
+    setTdee(tdeeValue)
+  }
+
+  const changeFoodLog = (updatedFoodLog) => {
+    setFoodLog(updatedFoodLog)
+  }
+
+  const changeCaloriesLeft = () => {
+    if (foodLog.length > 0) {
+      const totalCalories = foodLog.reduce(
+        (sum, item) => sum + parseFloat(item.calories),
+        0
+      )
+      setCaloriesLeft((usertdee - totalCalories).toFixed(2))
+    }
+  }
 
   const handleUserDataChange = (userInfoData, userGoalData, userFreqData) => {
-    const updatedUserData = { ...userInfoData, userGoalData, userFreqData };
-    console.log(updatedUserData);
-    setUserData(updatedUserData);
-  };
+    const updatedUserData = { ...userInfoData, userGoalData, userFreqData }
+    console.log(updatedUserData)
+    setUserData(updatedUserData)
+  }
   useEffect(() => {
-    setCaloriesLeft(usertdee);
-    // console.log(
-    //   'tdee ' + tdee,
-    //   ' usertdee ' + usertdee + ' caloriesleft: ' + caloriesLeft
-    // )
-  }, [usertdee]);
+    setCaloriesLeft(usertdee)
+    changeCaloriesLeft()
+  }, [usertdee, foodLog])
 
   return (
     <div>
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <UserInfo
               handleUserDataChange={handleUserDataChange}
@@ -70,7 +81,7 @@ function App() {
           }
         />
         <Route
-          path="goals"
+          path='goals'
           element={
             <UserGoals
               handleUserDataChange={handleUserDataChange}
@@ -87,7 +98,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="calculator"
+          path='calculator'
           element={
             <Nutrition
               tdee={tdee}
@@ -103,16 +114,18 @@ function App() {
               setProtein={setProtein}
               caloriesLeft={caloriesLeft}
               setCaloriesLeft={setCaloriesLeft}
+              changeCaloriesLeft={changeCaloriesLeft}
+              changeFoodLog={changeFoodLog}
             />
           }
         ></Route>
         <Route
-          path="workouts"
+          path='workouts'
           element={<Workout userData={userData} />}
         ></Route>
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

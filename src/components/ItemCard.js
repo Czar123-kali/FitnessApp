@@ -1,7 +1,7 @@
 import React from "react";
 
 const ItemCard = ({ item }) => {
-  console.log('card' + item.name)
+  // console.log('card' + item.name)
   return (
     <div className='bg-white shadow rounded p-4 mb-4 inline-block'>
       <h2 className='text-xl font-semibold mb-2'>{item.name}</h2>

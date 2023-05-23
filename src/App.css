@@ -9,6 +9,11 @@
     
 }
 
+.radio-button-label {
+    height: 8em; 
+    width: 8em; 
+  }
+
 .animate-bounce {
     animation: bounce 1s ease-in 1;
 }

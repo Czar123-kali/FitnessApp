@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../App.css'
 
 const UserGoals = ({
   handleUserDataChange,
@@ -48,14 +49,14 @@ const UserGoals = ({
         </Link>
       </div>
       <div className='mt-20'>
-        <div className='goal-page flex justify-center items-center'>
-          <div className='bg-gray-200 p-6 rounded-lg w-full md:w-1/2'>
+        <div className='goal-page flex justify-center items-center min-h-screen'>
+          <div className='bg-gray-200 p-6 rounded-lg w-11/12 md:w-4/12'>
             <h3 className='text-lg font-semibold mb-4'>
               Select your fitness goal:
             </h3>
             <div className='flex flex-row flex-wrap justify-center space-x-4'>
               <label
-                className={`flex items-center ${
+                className={`flex items-center radio-button-label ${
                   selectedGoal === 'weight-loss'
                     ? 'bg-blue-500 text-white animate-bounce'
                     : 'bg-blue-200 text-blue-500'
@@ -73,7 +74,7 @@ const UserGoals = ({
                 Weight Loss
               </label>
               <label
-                className={`flex items-center ${
+                className={`flex items-center radio-button-label ${
                   selectedGoal === 'muscle-gain'
                     ? 'bg-green-500 text-white animate-bounce'
                     : 'bg-green-200 text-green-500'
@@ -91,7 +92,7 @@ const UserGoals = ({
                 Muscle Gain
               </label>
               <label
-                className={`flex items-center ${
+                className={`flex items-center radio-button-label ${
                   selectedGoal === 'flexibility'
                     ? 'bg-yellow-500 text-white animate-bounce'
                     : 'bg-yellow-200 text-yellow-500'
@@ -109,7 +110,7 @@ const UserGoals = ({
                 Flexibility
               </label>
               <label
-                className={`flex items-center ${
+                className={`flex items-center  radio-button-label ${
                   selectedGoal === 'cardiovascular'
                     ? 'bg-red-500 text-white animate-bounce'
                     : 'bg-red-200 text-red-500'
