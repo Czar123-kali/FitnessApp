@@ -47,160 +47,161 @@ const UserGoals = ({
           </button>
         </Link>
       </div>
+      <div className='mt-20'>
+        <div className='goal-page flex justify-center items-center'>
+          <div className='bg-gray-200 p-6 rounded-lg w-full md:w-1/2'>
+            <h3 className='text-lg font-semibold mb-4'>
+              Select your fitness goal:
+            </h3>
+            <div className='flex flex-row flex-wrap justify-center space-x-4'>
+              <label
+                className={`flex items-center ${
+                  selectedGoal === 'weight-loss'
+                    ? 'bg-blue-500 text-white animate-bounce'
+                    : 'bg-blue-200 text-blue-500'
+                } px-4 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='goal'
+                  value='weight-loss'
+                  checked={selectedGoal === 'weight-loss'}
+                  className='hidden'
+                  onClick={handleGoalChange}
+                  readOnly
+                />
+                Weight Loss
+              </label>
+              <label
+                className={`flex items-center ${
+                  selectedGoal === 'muscle-gain'
+                    ? 'bg-green-500 text-white animate-bounce'
+                    : 'bg-green-200 text-green-500'
+                } px-4 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='goal'
+                  value='muscle-gain'
+                  checked={selectedGoal === 'muscle-gain'}
+                  className='hidden'
+                  onClick={handleGoalChange}
+                  readOnly
+                />
+                Muscle Gain
+              </label>
+              <label
+                className={`flex items-center ${
+                  selectedGoal === 'flexibility'
+                    ? 'bg-yellow-500 text-white animate-bounce'
+                    : 'bg-yellow-200 text-yellow-500'
+                } px-4 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='goal'
+                  value='flexibility'
+                  checked={selectedGoal === 'flexibility'}
+                  className='hidden'
+                  onClick={handleGoalChange}
+                  readOnly
+                />
+                Flexibility
+              </label>
+              <label
+                className={`flex items-center ${
+                  selectedGoal === 'cardiovascular'
+                    ? 'bg-red-500 text-white animate-bounce'
+                    : 'bg-red-200 text-red-500'
+                } px-4 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='goal'
+                  value='cardiovascular'
+                  checked={selectedGoal === 'cardiovascular'}
+                  className='hidden'
+                  onClick={handleGoalChange}
+                  readOnly
+                />
+                Cardiovascular
+              </label>
+            </div>
 
-      <div className='goal-page flex justify-center items-center h-[calc(50vh-2rem)]'>
-        <div className='bg-gray-200 p-6 rounded-lg mx-auto max-w-screen-lg'>
-          <h3 className='text-lg font-semibold mb-4'>
-            Select your fitness goal:
-          </h3>
-          <div className='flex flex-row space-x-4'>
-            <label
-              className={`flex items-center ${
-                selectedGoal === 'weight-loss'
-                  ? 'bg-blue-500 text-white animate-bounce'
-                  : 'bg-blue-200 text-blue-500'
-              } px-4 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='goal'
-                value='weight-loss'
-                checked={selectedGoal === 'weight-loss'}
-                className='hidden'
-                onClick={handleGoalChange}
-                readOnly
-              />
-              Weight Loss
-            </label>
-            <label
-              className={`flex items-center ${
-                selectedGoal === 'muscle-gain'
-                  ? 'bg-green-500 text-white animate-bounce'
-                  : 'bg-green-200 text-green-500'
-              } px-4 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='goal'
-                value='muscle-gain'
-                checked={selectedGoal === 'muscle-gain'}
-                className='hidden'
-                onClick={handleGoalChange}
-                readOnly
-              />
-              Muscle Gain
-            </label>
-            <label
-              className={`flex items-center ${
-                selectedGoal === 'flexibility'
-                  ? 'bg-yellow-500 text-white animate-bounce'
-                  : 'bg-yellow-200 text-yellow-500'
-              } px-4 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='goal'
-                value='flexibility'
-                checked={selectedGoal === 'flexibility'}
-                className='hidden'
-                onClick={handleGoalChange}
-                readOnly
-              />
-              Flexibility
-            </label>
-            <label
-              className={`flex items-center ${
-                selectedGoal === 'cardiovascular'
-                  ? 'bg-red-500 text-white animate-bounce'
-                  : 'bg-red-200 text-red-500'
-              } px-4 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='goal'
-                value='cardiovascular'
-                checked={selectedGoal === 'cardiovascular'}
-                className='hidden'
-                onClick={handleGoalChange}
-                readOnly
-              />
-              Cardiovascular
-            </label>
-          </div>
+            <h3 className='text-lg font-semibold py-4'>
+              How many times are you willing to work out per week:
+            </h3>
+            <div className='flex flex-row flex-wrap justify-center space-x-4'>
+              <label
+                className={`flex items-center ${
+                  selectedFrequency === 1
+                    ? 'bg-blue-500 text-white animate-bounce'
+                    : 'bg-blue-200 text-blue-500'
+                } px-7 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='frequency'
+                  value={1}
+                  checked={workoutFreq === 1}
+                  className='hidden'
+                  onChange={handleFreqChange}
+                />
+                0-1 times
+              </label>
+              <label
+                className={`flex items-center ${
+                  selectedFrequency === 3
+                    ? 'bg-blue-500 text-white animate-bounce'
+                    : 'bg-blue-200 text-blue-500'
+                } px-7 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='frequency'
+                  value={3}
+                  checked={workoutFreq === 3}
+                  className='hidden'
+                  onChange={handleFreqChange}
+                />
+                2-3 times
+              </label>
+              <label
+                className={`flex items-center ${
+                  selectedFrequency === 5
+                    ? 'bg-blue-500 text-white animate-bounce'
+                    : 'bg-blue-200 text-blue-500'
+                } px-7 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='frequency'
+                  value={5}
+                  checked={workoutFreq === 5}
+                  className='hidden'
+                  onChange={handleFreqChange}
+                />
+                4-5 times
+              </label>
 
-          <h3 className='text-lg font-semibold py-4'>
-            How many times are you willing to work out per week:
-          </h3>
-          <div className='flex flex-row space-x-4'>
-            <label
-              className={`flex items-center ${
-                selectedFrequency === 1
-                  ? 'bg-blue-500 text-white animate-bounce'
-                  : 'bg-blue-200 text-blue-500'
-              } px-7 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='frequency'
-                value={1}
-                checked={workoutFreq === 1}
-                className='hidden'
-                onChange={handleFreqChange}
-              />
-              0-1 times
-            </label>
-            <label
-              className={`flex items-center ${
-                selectedFrequency === 3
-                  ? 'bg-blue-500 text-white animate-bounce'
-                  : 'bg-blue-200 text-blue-500'
-              } px-7 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='frequency'
-                value={3}
-                checked={workoutFreq === 3}
-                className='hidden'
-                onChange={handleFreqChange}
-              />
-              2-3 times
-            </label>
-            <label
-              className={`flex items-center ${
-                selectedFrequency === 5
-                  ? 'bg-blue-500 text-white animate-bounce'
-                  : 'bg-blue-200 text-blue-500'
-              } px-7 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='frequency'
-                value={5}
-                checked={workoutFreq === 5}
-                className='hidden'
-                onChange={handleFreqChange}
-              />
-              4-5 times
-            </label>
-
-            <label
-              className={`flex items-center ${
-                selectedFrequency === 7
-                  ? 'bg-blue-500 text-white animate-bounce'
-                  : 'bg-blue-200 text-blue-500'
-              } px-7 py-2 rounded cursor-pointer transition-colors`}
-            >
-              <input
-                type='radio'
-                name='frequency'
-                value={7}
-                checked={workoutFreq === 7}
-                className='hidden'
-                onChange={handleFreqChange}
-              />
-              6-7 times
-            </label>
+              <label
+                className={`flex items-center ${
+                  selectedFrequency === 7
+                    ? 'bg-blue-500 text-white animate-bounce'
+                    : 'bg-blue-200 text-blue-500'
+                } px-7 py-2 rounded cursor-pointer transition-colors mb-2`}
+              >
+                <input
+                  type='radio'
+                  name='frequency'
+                  value={7}
+                  checked={workoutFreq === 7}
+                  className='hidden'
+                  onChange={handleFreqChange}
+                />
+                6-7 times
+              </label>
+            </div>
           </div>
         </div>
       </div>
