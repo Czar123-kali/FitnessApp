@@ -1,46 +1,49 @@
-import UserGoals from "./components/UserGoals";
-import UserInfo from "./components/UserInfo";
-import Nutrition from "./components/Nutrition";
-import Navbar from "./components/Navbar";
-import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import UserGoals from './components/UserGoals'
+import UserInfo from './components/UserInfo'
+import Nutrition from './components/Nutrition'
+import Navbar from './components/Navbar'
+import { Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
 
 function App() {
   const [userData, setUserData] = useState({
-    goal: "",
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    activityLevel: "",
-  });
-  const [tdee, setTdee] = useState();
+    goal: '',
+    age: '',
+    gender: '',
+    height: '',
+    weight: '',
+    activityLevel: '',
+    workoutFreq: 0,
+  })
+  const [tdee, setTdee] = useState()
   const [userInfo, setUserInfo] = useState({
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    activityLevel: "",
-  });
-  const [selectedGoal, setSelectedGoal] = useState("");
-  const [showTDEE, setShowTDEE] = useState(false);
+    age: '',
+    gender: '',
+    height: '',
+    weight: '',
+    activityLevel: '',
+  })
+  const [selectedGoal, setSelectedGoal] = useState('')
+  const [workoutFreq, setWorkoutFreq] = useState(0)
+
+  const [showTDEE, setShowTDEE] = useState(false)
 
   const handleTdeeCalculation = (tdeeValue) => {
-    setTdee(tdeeValue);
-  };
+    setTdee(tdeeValue)
+  }
 
-  const handleUserDataChange = (userInfoData, userGoalData) => {
-    const updatedUserData = { ...userInfoData, userGoalData };
-    console.log(updatedUserData);
-    setUserData(updatedUserData);
-  };
+  const handleUserDataChange = (userInfoData, userGoalData, userFreqData) => {
+    const updatedUserData = { ...userInfoData, userGoalData, userFreqData }
+    console.log(updatedUserData)
+    setUserData(updatedUserData)
+  }
 
   return (
     <div>
       <Navbar />
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             <UserInfo
               handleUserDataChange={handleUserDataChange}
@@ -51,7 +54,7 @@ function App() {
           }
         />
         <Route
-          path="goals"
+          path='goals'
           element={
             <UserGoals
               handleUserDataChange={handleUserDataChange}
@@ -60,18 +63,20 @@ function App() {
               handleTdeeCalculation={handleTdeeCalculation}
               selectedGoal={selectedGoal}
               setSelectedGoal={setSelectedGoal}
+              workoutFreq={workoutFreq}
+              setWorkoutFreq={setWorkoutFreq}
               showTDEE={showTDEE}
               setShowTDEE={setShowTDEE}
             />
           }
         ></Route>
         <Route
-          path="calculator"
+          path='calculator'
           element={<Nutrition tdee={tdee} userData={userData} />}
         ></Route>
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

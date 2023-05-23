@@ -20,7 +20,6 @@ const UserInfo = ({
         <h3 className="text-lg font-semibold mb-4">
           Input your info below to calculate how many calories you burn a day:
         </h3>
-        form
         <div className="flex flex-col space-y-4">
           <div className="flex flex-col">
             <label htmlFor="age">Age</label>
