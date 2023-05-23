@@ -14,10 +14,12 @@ const Nutrition = ({
   setProtein,
   fat,
   setFat,
+  caloriesLeft,
+  setCaloriesLeft,
 }) => {
   const [foodInput, setFoodInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [caloriesLeft, setCaloriesLeft] = useState(usertdee)
+  // const [caloriesLeft, setCaloriesLeft] = useState(usertdee)
 
   const handleButtonClick = async () => {
     if (foodInput.trim() === '') {

@@ -27,12 +27,12 @@ function App() {
   })
   const [selectedGoal, setSelectedGoal] = useState('')
   const [workoutFreq, setWorkoutFreq] = useState(0)
-
   const [showTDEE, setShowTDEE] = useState(false)
   const [foodLog, setFoodLog] = useState([])
   const [fat, setFat] = useState(0)
   const [carbs, setCarbs] = useState(0)
   const [protein, setProtein] = useState(0)
+  const [caloriesLeft, setCaloriesLeft] = useState(usertdee)
   const handleTdeeCalculation = (tdeeValue) => {
     setTdee(tdeeValue)
   }
@@ -42,8 +42,14 @@ function App() {
     console.log(updatedUserData)
     setUserData(updatedUserData)
   }
-  // const [caloriesLeft, setCaloriesLeft] = useState(usertdee)
 
+  useEffect(() => {
+    setCaloriesLeft(usertdee)
+    // console.log(
+    //   'tdee ' + tdee,
+    //   ' usertdee ' + usertdee + ' caloriesleft: ' + caloriesLeft
+    // )
+  }, [usertdee])
   return (
     <div>
       <Navbar />
@@ -94,8 +100,8 @@ function App() {
               setCarbs={setCarbs}
               protein={protein}
               setProtein={setProtein}
-              // caloriesLeft={caloriesLeft}
-              // setCaloriesLeft={setCaloriesLeft}
+              caloriesLeft={caloriesLeft}
+              setCaloriesLeft={setCaloriesLeft}
             />
           }
         ></Route>
