@@ -8,7 +8,6 @@ const UserGoals = ({
   setSelectedGoal,
   workoutFreq,
   setWorkoutFreq,
-
 }) => {
   const [selectedFrequency, setSelectedFrequency] = useState(null)
 
