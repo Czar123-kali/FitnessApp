@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
-
 import { Link } from 'react-router-dom'
 
 const UserGoals = ({
   handleUserDataChange,
   userInfo,
-  userData,
-  handleTdeeCalculation,
   selectedGoal,
   setSelectedGoal,
   workoutFreq,
   setWorkoutFreq,
-  showTDEE,
-  setShowTDEE,
+
 }) => {
   const [selectedFrequency, setSelectedFrequency] = useState(null)
 
