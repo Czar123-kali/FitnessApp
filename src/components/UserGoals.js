@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
 
@@ -24,6 +24,10 @@ const UserGoals = ({
     setSelectedFrequency(frequency)
     handleUserDataChange(userInfo, selectedGoal, frequency)
   }
+
+  useEffect(() => {
+    setSelectedFrequency(workoutFreq);
+  }, [workoutFreq]);
 
   return (
     <div>
