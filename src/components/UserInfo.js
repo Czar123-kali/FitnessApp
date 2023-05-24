@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const UserInfo = ({
   handleUserDataChange,
@@ -10,53 +10,59 @@ const UserInfo = ({
   showTDEE,
   setShowTDEE,
 }) => {
-  const { age, gender, height, weight, activityLevel } = userInfo
-  const [savedMessage, setSavedMessage] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
+  const { age, gender, height, weight, activityLevel } = userInfo;
+  const [savedMessage, setSavedMessage] = useState("");
+  const [errorMessages, setErrorMessages] = useState({
+    age: "",
+    gender: "",
+    height: "",
+    weight: "",
+    activityLevel: "",
+  });
 
   const calculateTDEE = () => {
     if (
-      age === '' ||
-      gender === '' ||
-      activityLevel === '' ||
-      height === '' ||
-      weight === ''
+      age === "" ||
+      gender === "" ||
+      activityLevel === "" ||
+      height === "" ||
+      weight === ""
     ) {
-      return 0
+      return 0;
     }
 
-    let activityMultiplier
+    let activityMultiplier;
 
     switch (activityLevel) {
-      case 'sedentary':
-        activityMultiplier = 1.2
-        break
-      case 'lightly-active':
-        activityMultiplier = 1.375
-        break
-      case 'moderately-active':
-        activityMultiplier = 1.55
-        break
-      case 'very-active':
-        activityMultiplier = 1.725
-        break
-      case 'super-active':
-        activityMultiplier = 1.9
-        break
+      case "sedentary":
+        activityMultiplier = 1.2;
+        break;
+      case "lightly-active":
+        activityMultiplier = 1.375;
+        break;
+      case "moderately-active":
+        activityMultiplier = 1.55;
+        break;
+      case "very-active":
+        activityMultiplier = 1.725;
+        break;
+      case "super-active":
+        activityMultiplier = 1.9;
+        break;
       default:
-        activityMultiplier = 1.2
-        break
+        activityMultiplier = 1.2;
+        break;
     }
 
     const tdee =
       (10 * weight +
         6.25 * height -
         5 * age +
-        (gender === 'female' ? -161 : 5)) *
-      activityMultiplier
+        (gender === "female" ? -161 : 5)) *
+      activityMultiplier;
 
-    return Math.round(tdee)
-  }
+    return Math.round(tdee);
+  };
 
   // const handleShowTDEE = () => {
   //   setShowTDEE(true) // Set showTDEE state to true when the button is clicked
@@ -64,14 +70,69 @@ const UserInfo = ({
   //   console.log(userData)
   // }
 
-  const tdee = calculateTDEE() // Calculate TDEE
-  handleTdeeCalculation(tdee)
+  const tdee = calculateTDEE(); // Calculate TDEE
+  handleTdeeCalculation(tdee);
 
   const handleUserInfoChange = (e) => {
-    const { name, value } = e.target
-    setUserInfo({ ...userInfo, [name]: value })
-    handleUserDataChange({ ...userInfo, [name]: value })
-  }
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+    handleUserDataChange({ ...userInfo, [name]: value });
+
+    if (
+      name === "age" ||
+      name === "gender" ||
+      name === "height" ||
+      name === "weight" ||
+      name === "activityLevel"
+    ) {
+      const isValid = validateFields();
+      setShowTDEE(isValid); // Set showTDEE state based on the validation result
+      if (isValid) {
+        const calculatedTDEE = calculateTDEE();
+        handleTdeeCalculation(calculatedTDEE);
+      }
+    }
+  };
+
+  const handleShowTDEE = () => {
+    if (validateFields()) {
+      const calculatedTDEE = calculateTDEE();
+      setShowTDEE(true); // Set showTDEE state to true when all fields are valid
+      handleTdeeCalculation(calculatedTDEE);
+    } else {
+      setShowTDEE(false); // Set showTDEE state to false if validation fails
+    }
+  };
+
+  const validateFields = () => {
+    let isValid = true;
+    const errors = {};
+
+    if (age.trim() === "" || isNaN(age)) {
+      errors.age = "Please enter a valid age";
+      isValid = false;
+    }
+
+    if (height.trim() === "" || isNaN(height)) {
+      errors.height = "Please enter a valid height";
+      isValid = false;
+    }
+
+    if (weight.trim() === "" || isNaN(weight)) {
+      errors.weight = "Please enter a valid weight";
+      isValid = false;
+    }
+
+    if (activityLevel === "") {
+      errors.activityLevel = "Please select your activity level";
+      isValid = false;
+    }
+
+    setErrorMessages(errors);
+
+    return isValid;
+  };
+
 
   return (
     <div>
@@ -91,6 +152,9 @@ const UserInfo = ({
                 onChange={handleUserInfoChange}
                 className="border border-gray-400 rounded-md p-2"
               />
+              {errorMessages.age && (
+                <p className="text-red-500">{errorMessages.age}</p>
+              )}
             </div>
             <div className="flex flex-col">
               <label htmlFor="gender">Gender</label>
@@ -106,6 +170,9 @@ const UserInfo = ({
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
+              {errorMessages.gender && (
+                <p className="text-red-500">{errorMessages.gender}</p>
+              )}
             </div>
             <div className="flex flex-col">
               <label htmlFor="height">Height (cm)</label>
@@ -116,6 +183,9 @@ const UserInfo = ({
                 onChange={handleUserInfoChange}
                 className="border border-gray-400 rounded-md p-2"
               />
+              {errorMessages.height && (
+                <p className="text-red-500">{errorMessages.height}</p>
+              )}
             </div>
             <div className="flex flex-col">
               <label htmlFor="weight">Weight (kg)</label>
@@ -126,6 +196,9 @@ const UserInfo = ({
                 onChange={handleUserInfoChange}
                 className="border border-gray-400 rounded-md p-2"
               />
+              {errorMessages.weight && (
+                <p className="text-red-500">{errorMessages.weight}</p>
+              )}
             </div>
             <div className="flex flex-col">
               <label htmlFor="activity-level">Activity Level</label>
@@ -157,6 +230,9 @@ const UserInfo = ({
                   training twice a day)
                 </option>
               </select>
+              {errorMessages.activityLevel && (
+                <p className="text-red-500">{errorMessages.activityLevel}</p>
+              )}
             </div>
             {/* <button
               className='bg-blue-500 text-white px-4 py-2 rounded-md'
@@ -213,6 +289,6 @@ const UserInfo = ({
       </div>
     </div>
   );
-}
+};
 
-export default UserInfo
+export default UserInfo;
