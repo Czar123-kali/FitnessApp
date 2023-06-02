@@ -94,7 +94,7 @@ const Workout = ({ userData }) => {
 
   useEffect(() => {
     handleWorkoutType(workoutType);
-  });
+  }, []);
 
   return (
     <div>

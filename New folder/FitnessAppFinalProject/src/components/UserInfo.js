@@ -11,6 +11,7 @@ const UserInfo = ({
   setShowTDEE,
 }) => {
   const { age, gender, height, weight, activityLevel } = userInfo;
+  const [savedMessage, setSavedMessage] = useState("");
   const [errorMessages, setErrorMessages] = useState({
     age: "",
     gender: "",
@@ -93,15 +94,15 @@ const UserInfo = ({
     }
   };
 
-  // const handleShowTDEE = () => {
-  //   if (validateFields()) {
-  //     const calculatedTDEE = calculateTDEE();
-  //     setShowTDEE(true); // Set showTDEE state to true when all fields are valid
-  //     handleTdeeCalculation(calculatedTDEE);
-  //   } else {
-  //     setShowTDEE(false); // Set showTDEE state to false if validation fails
-  //   }
-  // };
+  const handleShowTDEE = () => {
+    if (validateFields()) {
+      const calculatedTDEE = calculateTDEE();
+      setShowTDEE(true); // Set showTDEE state to true when all fields are valid
+      handleTdeeCalculation(calculatedTDEE);
+    } else {
+      setShowTDEE(false); // Set showTDEE state to false if validation fails
+    }
+  };
 
   const validateFields = () => {
     let isValid = true;
@@ -131,6 +132,7 @@ const UserInfo = ({
 
     return isValid;
   };
+
 
   return (
     <div>
@@ -267,7 +269,7 @@ const UserInfo = ({
       <div className="flex justify-center items-center">
         <div className="p-6 rounded-lg mx-auto max-w-screen-lg">
           <div className="flex justify-center"></div>
-          {showTDEE && tdee !== 0 ? (
+          {showTDEE && tdee != 0 ? (
             <div className="mt-6">
               <h2 className="text-gray-500">
                 You are {userData.age} y/o {userData.gender} who is{" "}
@@ -277,6 +279,7 @@ const UserInfo = ({
               <h2 className="text-gray-500">
                 Based on your data, your best estimate for maintenance calories
                 is {tdee} per day.
+                <h2></h2>
               </h2>
             </div>
           ) : (

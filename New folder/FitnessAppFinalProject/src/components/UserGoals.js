@@ -34,6 +34,7 @@ const UserGoals = ({
       <div className="absolute left-5 top-1/2 transform -translate-y-1/2">
         <Link to="/" className="inline-block">
           <button className="bg-gray-500 text-white rounded-full w-12 h-12 flex items-center justify-center">
+            {/* Alternative left arrow */}
             <svg
               className="h-6 w-6 text-white transform rotate-180"
               xmlns="http://www.w3.org/2000/svg"
@@ -213,6 +214,7 @@ const UserGoals = ({
       <div className="absolute right-5 top-1/2 transform -translate-y-1/2">
         <Link to="/calculator" className="inline-block">
           <button className="bg-gray-500 text-white rounded-full w-12 h-12 flex items-center justify-center">
+            {/* Alternative right arrow */}
             <svg
               className="h-6 w-6 text-white"
               xmlns="http://www.w3.org/2000/svg"
