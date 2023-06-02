@@ -69,7 +69,7 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="modal-overlay md:hidden z-10" ref={dropdownRef}>
-          <div className="modal-content absolute w-full top-16 right-0 bg-gray-900 px-4 py-2">
+          <div className="modal-content absolute w-full top-16 right-0 bg-blue-900 border-gray-200 dark:bg-gray-900 px-4 py-2">
             <ul className="text-white mt-2 mb-2">
               <li className="h-8 py-3">
                 <Link
